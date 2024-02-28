@@ -18,13 +18,14 @@ fetch(url)
 // tarjeta personaje
 const createCard= (thumbnail, title) => {
   return `
-      <div class="col-md-3 col-sm-6 mb-6";>
-          <div class="col-sm-12 mi-clase";>
-              <img src="${thumbnail}" alt="${title}" class="img-fluid" >
+  <div class="col-md-3 col-sm-6 mb-6 ";>
+  <a id="card" href="comic_info.html" class="col-sm-12 link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover hvr-float-shadow "; >
+  <img src="${thumbnail}" alt="${title}" class="img-top img-fluid" style="height: 300px; width: 300px;">
               <h5 class="h6 text-light mt-2 mb-3">${title}</h5>
-          </div>
-      </div>
-  `;
+          </a>
+  </div>
+  `; 
+
 };
 
 // mis personajes en pantalla
@@ -39,8 +40,6 @@ const printData = (personajes) => {
   str += "</div>";
   main.innerHTML = str;
 };
-
-
 
 function displayResults(results) {
   const main = document.getElementById("main");
@@ -123,6 +122,7 @@ function displayResults(results) {
 
   selectTipo.addEventListener("change", typeChange);
   
+  //bucador input
   btnBuscar.addEventListener("click", () => {
     let searchTerm = searchInput.value;
     if (searchTerm.length > 2) {
@@ -135,8 +135,47 @@ function displayResults(results) {
 
   selectOrden.addEventListener("change", typeChange);
 
+//lista de marvel
+const listMarvel = document.querySelector("#list-marvel");
+
+
+
+
+
+// manejar la paginación
+function handlePagination(totalResults) {
+  const paginationContainer = document.getElementById("pagination");
+  paginationContainer.innerHTML = ''; // limpiar contenido existente
+
+  const totalPages = Math.ceil(totalResults / limit);
+  const prevPage = `
+    <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+      <a class="page-link" href="#" onclick="changePage(${currentPage - 1})">Previous</a>
+    </li>
+  `;
+  paginationContainer.innerHTML += prevPage;
+
+  for (let i = 1; i <= totalPages; i++) {
+    const pageItem = `
+      <li class="page-item ${currentPage === i ? 'active' : ''}">
+        <a class="page-link" href="#" onclick="changePage(${i})">${i}</a>
+      </li>
+    `;
+    paginationContainer.innerHTML += pageItem;
+  }
+
+  const nextPage = `
+    <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}">
+      <a class="page-link" href="#" onclick="changePage(${currentPage + 1})">Next</a>
+    </li>
+  `;
+  paginationContainer.innerHTML += nextPage;
+}
+
+// Función para cambiar de página
+function changePage(pageNumber) {
+  currentPage = pageNumber;
+  performSearch();
+}
 
   
- 
-
-
