@@ -13,20 +13,30 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 
 </head>
 <!-- background-size: cover; -->
 
-<body
+<body data-bs-theme="light" ;
     style="background-image:url(image/Spider\ Man\ Miles\ Morales_xtrafondos.com\ \(2\).jpg);background-size: cover; background-repeat: no-repeat; background-position:center ;  ">
-    <!-- style="background-color: #333" -->
     <div class="container-fluid" style="background-color: #333;">
-        <a href="file:///D:/APUNTES/ADA%20js/ada%20comics/index.html"
-            class="link-light link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
-            <h1 class="text-center pt-5 pb-5 text-light">Marvel heroes</h1>
-        </a>
+        <div class="row justify-content-center align-items-center">
+            <div class="col-3 text-center">
+                <a href="file:///D:/APUNTES/ADA%20js/ada%20comics/index.html"
+                    class="link-light link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                    <h1 class="text-light pt-5 pb-5">Marvel heroes</h1>
+                </a>
+            </div>
+            <div class="col-2 ">
+                <button id="themeToggleBtn" class="btn btn-light">
+                    <i id="sunIcon" class="bi bi-brightness-high"></i>
+                    <i id="moonIcon" class="bi bi-moon"></i>
+                </button>
+            </div>
+        </div>
     </div>
+
     <div class="container ">
         <div class="row mt-5 mb-2">
             <div class="col">
@@ -65,30 +75,80 @@
         <h3 class="text-light pt-3 pb-3">Resultados:</h3>
         <div id="main" style="max-width: 950px;"></div>
     </div>
-    <!-- <div class="container">
-        <img src="">
-        <h3 class="text-light pt-3 pb-3">Nombre:</h3>
-    </div> -->
-    <nav aria-label="..."; class="pt-3 pb-3">
-        <ul class="pagination justify-content-center" id="pagination" >
-          <li class="page-item disabled">
-            <a class="page-link">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item active" aria-current="page">
-            <a class="page-link" href="#">2</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
+    <!-- detalles comics -->
+    <section id="comic-details" class="d-none mt-6 w-full">
+        <div id="comic-details-content" class="flex flex-col">
+            <img id="comic-thumbnail" class="shadow-zinc-500/70 w-full h-full" alt="Comic Thumbnail">
+            <div class="flex flex-col ml-4">
+                <h2 id="comic-title" class="text-2xl font-bold my-2"></h2>
+                <div class="text-sm">
+                    <h1 class="font-black mb-2">Fecha de lanzamiento:</h1>
+                    <p id="comic-date"></p>
+                </div>
+                <p id="comic-description" class="text-justify mb-2"></p>
+                <div class="text-sm">
+                    <h1 class="font-black mb-2">Guionistas:</h1>
+                    <p id="comic-creators"></p>
+                </div>
+            </div>
+            <div class="flex flex-col justify-center mt-4">
+                <p class='text-xl font-bold mb-2'>Personajes:</p>
+                <div id="comic-characters" class="flex flex-wrap w-full"></div>
+            </div>
+        </div>
+        <button id="back-btn" type="button" class="m-2 p-2 text-red-600"><i
+                class="fa-solid fa-arrow-left-long"></i></button>
+    </section>
+    <!-- detalles personajes -->
+    <section id="character-details" class="d-none mt-6 w-full">
+        <div id="characters-details-content" class="flex flex-col">
+            <div class="flex">
+                <img id="character-thumbnail" class="shadow-zinc-500/70 w-full h-full" alt="Character Thumbnail">
+                <div class="flex flex-col ml-4">
+                    <h2 id="character-name" class="text-2xl font-bold my-2"></h2>
+                    <p id="character-description" class="text-justify"></p>
+                </div>
+            </div>
+            <div class="flex flex-col justify-center mt-4">
+                <p class='text-xl font-bold mb-2'>Comics:</p>
+                <div id="character-comics" class="flex flex-wrap w-full"></div>
+            </div>
+        </div>
+        <button id="back-to-results" type="button" class="m-2 p-2 text-red-600"><i
+                class="fa-solid fa-arrow-left-long"></i></button>
+    </section>
+
+
+
+
+
+
+    <nav aria-label="..." ; class="pt-3 pb-3">
+        <ul class="pagination justify-content-center" id="pagination">
+            <li class="page-item disabled" id="id-previous">
+                <a class="page-link" href="" onclick="previousPage()">Previous</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" onclick="goToPage(1)">1</a>
+            </li>
+            <li class="page-item" aria-current="page">
+                <a class="page-link" href="#" onclick="goToPage(2)">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" onclick="goToPage(3)">3</a>
+            </li>
+            <li class="page-item" id="id-next">
+                <a class="page-link" href="#" onclick="nextPage()">Next</a>
+            </li>
         </ul>
-      </nav>
+    </nav>
+
     <footer class=" pt-2 pb-2" ; style="background-color: #1B1A55;">
         <h5 class="text-light text-center">
             <img src="image/iron-man.gif" alt="" style="width: 50px; height: 50px; margin-right: 10px;" class="mr-10">
             Made by Maggie
-            <img src="image/iron-man.gif" alt="" style="width: 50px; height: 50px; margin-left: 10px;transform: scaleX(-1);"; class="ml-10 ">
+            <img src="image/iron-man.gif" alt=""
+                style="width: 50px; height: 50px; margin-left: 10px;transform: scaleX(-1);" ; class="ml-10 ">
         </h5>
     </footer>
 
