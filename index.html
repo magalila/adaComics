@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- permiso a la api, confirmando que es seguro -->
+    <script src="https://cdn.jsdelivr.net/npm/js-md5@0.7.3/build/md5.min.js"></script>
+    <title>Ada comics</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+<!-- background-size: cover; -->
+
+<body data-bs-theme="light" ;
+    style="background-image:url(image/Spider\ Man\ Miles\ Morales_xtrafondos.com\ \(2\).jpg);background-size: cover; background-repeat: no-repeat; background-position:center ;  ">
+    <div class="container-fluid" style="background-color: #333;">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-3 text-center">
+                <!-- https://fastidious-faloodeh-5766f2.netlify.app/ -->
+                <!-- file:///D:/APUNTES/ADA%20js/ada%20comics/index.html -->
+                <a href="file:///D:/APUNTES/ADA%20js/ada%20comics/index.html"
+                    class="link-light link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                    <h1 class="text-light pt-5 pb-5">Marvel heroes</h1>
+                </a>
+            </div>
+            <div class="col-2 ">
+                <button id="themeToggleBtn" class="btn btn-light">
+                    <i id="sunIcon" class="bi bi-brightness-high"></i>
+                    <i id="moonIcon" class="bi bi-moon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container ">
+        <div class="row mt-5 mb-2">
+            <div class="col">
+                <div class="row align-items-center">
+                    <label for="disabledTextInput" class="col-auto text-light">Búsqueda: </label>
+                    <!-- buscador -->
+                    <input type="text" id="disabledTextInput" name="disabledTextInput" class="form-control col"
+                        placeholder="Ingrese su búsqueda...">
+                    <ul id="results"></ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row align-items-center">
+                    <label for="disabledTextInput" class=" col-auto text-light">Tipo: </label>
+                    <select class="form-select col" aria-label="Default select example" id="select-tipo">
+                        <option value="1">Comics</option>
+                        <option value="2">Personajes</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row align-items-center">
+                    <label for="disabledTextInput" class="col-auto text-light">Orden: </label>
+                    <select class="form-select col" aria-label="Default select example" id="select-orden">
+                        <option value="1">A-Z</option>
+                        <option value="2">Z-A</option>
+                        <option value="3">Más nuevos</option>
+                        <option value="4">Más viejos</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <button id="btn-buscar" type="submit" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+        <h3 class="text-light pt-3 pb-3">Resultados:</h3>
+        <div id="main" style="max-width: 950px;"></div>
+    </div>
+    <!-- detalles comics -->
+    <section id="comic-details" style="max-width: 950px; margin-left: 110px;">
+    </section>
+    <!-- detalles personajes -->
+    <section id="character-details" style="max-width: 950px; margin-left: 110px;">
+    </section>
+    <nav aria-label="..." ; class="pt-3 pb-3">
+        <ul class="pagination justify-content-center" id="pagination">
+            <li class="page-item disabled" id="id-previous">
+                <a class="page-link" href="" onclick="previousPage()">Previous</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" onclick="goToPage(1)">1</a>
+            </li>
+            <li class="page-item" aria-current="page">
+                <a class="page-link" href="#" onclick="goToPage(2)">2</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#" onclick="goToPage(3)">3</a>
+            </li>
+            <li class="page-item" id="id-next">
+                <a class="page-link" href="#" onclick="nextPage()">Next</a>
+            </li>
+        </ul>
+    </nav>
+
+    <footer class=" pt-2 pb-2" ; style="background-color: #1B1A55;">
+        <h5 class="text-light text-center">
+            <img src="image/iron-man.gif" alt="" style="width: 50px; height: 50px; margin-right: 10px;" class="mr-10">
+            Made by Maggie
+            <img src="image/iron-man.gif" alt=""
+                style="width: 50px; height: 50px; margin-left: 10px;transform: scaleX(-1);" ; class="ml-10 ">
+        </h5>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
